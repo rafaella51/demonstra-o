@@ -227,7 +227,8 @@ font-size:clamp(2.6rem, 5.2vw, 4.2rem);
 line-height:1.04;
 font-weight:400;
 margin-bottom:28px;
-max-width:11ch;
+max-width:20ch;
+text-wrap:balance;
 text-shadow:0 4px 24px rgba(0,0,0,0.35);
 }
 .hero-copy p{
@@ -270,6 +271,39 @@ to{opacity:1; transform:translateY(0);}
 .reveal{animation:none; opacity:1; transform:none;}
 html{scroll-behavior:auto;}
 }
+
+/* scroll-triggered reveal (sections below the fold) */
+.reveal-on-scroll{
+opacity:0;
+transform:translateY(26px);
+transition:opacity .8s cubic-bezier(.22,.68,.32,1), transform .8s cubic-bezier(.22,.68,.32,1);
+}
+.reveal-on-scroll.is-visible{opacity:1; transform:translateY(0);}
+@media (prefers-reduced-motion: reduce){
+.reveal-on-scroll{opacity:1; transform:none; transition:none;}
+}
+.service-grid .reveal-on-scroll:nth-child(1){transition-delay:0ms}
+.service-grid .reveal-on-scroll:nth-child(2){transition-delay:70ms}
+.service-grid .reveal-on-scroll:nth-child(3){transition-delay:140ms}
+.service-grid .reveal-on-scroll:nth-child(4){transition-delay:210ms}
+.service-grid .reveal-on-scroll:nth-child(5){transition-delay:280ms}
+.service-grid .reveal-on-scroll:nth-child(6){transition-delay:350ms}
+.hl-scroll .reveal-on-scroll:nth-child(1){transition-delay:0ms}
+.hl-scroll .reveal-on-scroll:nth-child(2){transition-delay:60ms}
+.hl-scroll .reveal-on-scroll:nth-child(3){transition-delay:120ms}
+.hl-scroll .reveal-on-scroll:nth-child(4){transition-delay:180ms}
+.hl-scroll .reveal-on-scroll:nth-child(5){transition-delay:240ms}
+.hl-scroll .reveal-on-scroll:nth-child(6){transition-delay:300ms}
+.hl-scroll .reveal-on-scroll:nth-child(7){transition-delay:360ms}
+.exp-grid .reveal-on-scroll:nth-child(1){transition-delay:0ms}
+.exp-grid .reveal-on-scroll:nth-child(2){transition-delay:120ms}
+.exp-grid .reveal-on-scroll:nth-child(3){transition-delay:240ms}
+.insta-grid .reveal-on-scroll:nth-child(1){transition-delay:0ms}
+.insta-grid .reveal-on-scroll:nth-child(2){transition-delay:50ms}
+.insta-grid .reveal-on-scroll:nth-child(3){transition-delay:100ms}
+.insta-grid .reveal-on-scroll:nth-child(4){transition-delay:150ms}
+.insta-grid .reveal-on-scroll:nth-child(5){transition-delay:200ms}
+.insta-grid .reveal-on-scroll:nth-child(6){transition-delay:250ms}
 
 /* ---------- SECTION HEADERS ---------- */
 .section-pad{padding:120px 0;}
@@ -485,10 +519,10 @@ scrollbar-width:none;
 .hl-item{
 flex:0 0 auto;
 width:180px;
-padding:30px 22px;
+height:190px;
+padding:26px 22px;
 background:var(--ivory);
 border:1px solid var(--line);
-min-height:150px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
@@ -518,13 +552,39 @@ margin-top:10px;
 }
 
 /* ---------- EXPERIENCE (editorial imagery) ---------- */
-.experience{background:var(--ink); color:var(--paper);}
+.experience{
+background:var(--ink);
+color:var(--paper);
+position:relative;
+overflow:hidden;
+padding-top:90px;
+}
+.experience::before{
+content:'';
+position:absolute; inset:0;
+background-image:
+repeating-linear-gradient(0deg, rgba(251,249,246,0.045) 0px, rgba(251,249,246,0.045) 1px, transparent 1px, transparent 56px),
+repeating-linear-gradient(90deg, rgba(251,249,246,0.045) 0px, rgba(251,249,246,0.045) 1px, transparent 1px, transparent 56px);
+mask-image:radial-gradient(ellipse 60% 70% at 20% 0%, #000 40%, transparent 100%);
+}
+.experience::after{
+content:'”';
+position:absolute;
+top:-140px; right:2%;
+font-family:'Fraunces', serif;
+font-size:34rem;
+line-height:1;
+color:rgba(251,249,246,0.045);
+z-index:0;
+pointer-events:none;
+}
+.experience .wrap{position:relative; z-index:1;}
 .exp-top{
 display:flex;
 justify-content:space-between;
 align-items:flex-end;
 gap:40px;
-margin-bottom:60px;
+margin-bottom:44px;
 flex-wrap:wrap;
 }
 .exp-top h2{
@@ -554,8 +614,20 @@ grid-template-rows: 260px 260px;
 .exp-grid figure{
 overflow:hidden;
 height:100%;
+position:relative;
 }
-.exp-grid img{width:100%; height:100%; object-fit:cover;}
+.exp-grid figure::after{
+content:'';
+position:absolute; inset:0;
+background:rgba(28,23,18,0);
+transition:background 0.4s ease;
+}
+.exp-grid figure:hover::after{background:rgba(28,23,18,0.1);}
+.exp-grid img{
+width:100%; height:100%; object-fit:cover;
+transition:transform 0.7s cubic-bezier(.22,.68,.32,1);
+}
+.exp-grid figure:hover img{transform:scale(1.07);}
 
 /* ---------- REVIEWS ---------- */
 .reviews{background:var(--nude-soft);}
@@ -854,13 +926,13 @@ Benfica · Lisboa
 <section class="presentation section-pad">
 <div class="wrap">
 <div class="presentation-grid">
-<div class="presentation-text">
+<div class="presentation-text reveal-on-scroll">
 <div class="kicker">O conceito</div>
 <h2>Um espaço para cuidar de si.</h2>
 <p>O DoubleSpace reúne, num só endereço em Benfica, diferentes cuidados de beleza e bem-estar — pensados para quem procura um momento de atenção genuína, sem pressa e sem excessos.</p>
 <p>Um lugar simples de encontrar e fácil de voltar, onde cada visita é tratada com o mesmo cuidado.</p>
 </div>
-<div class="presentation-media">
+<div class="presentation-media reveal-on-scroll" style="transition-delay:120ms">
 <div class="frame">
 <img src="interior-manicure.jpg" alt="Interior do salão DoubleSpace com zona de manicure e ambiente elegante">
 </div>
@@ -875,14 +947,14 @@ Benfica · Lisboa
 
 <section class="services" id="servicos">
 <div class="wrap section-pad" style="padding-bottom:0;">
-<div class="intro-block">
+<div class="intro-block reveal-on-scroll">
 <div class="kicker">O que oferecemos</div>
 <h2>Serviços</h2>
 <p>Cuidados pensados para o rosto, o corpo e os detalhes que fazem a diferença.</p>
 </div>
 </div>
 <div class="service-grid">
-<div class="service-card wide">
+<div class="service-card wide reveal-on-scroll">
 <img src="facial-room.jpg" alt="Sala de tratamentos faciais do DoubleSpace">
 <div class="tint"></div>
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div>
@@ -892,7 +964,7 @@ Benfica · Lisboa
 <a href="#" class="service-card-cta">Conhecer tratamento</a>
 </div>
 </div>
-<div class="service-card narrow">
+<div class="service-card narrow reveal-on-scroll">
 <img src="interior-manicure.jpg" alt="Zona de manicure do DoubleSpace">
 <div class="tint"></div>
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div>
@@ -902,7 +974,7 @@ Benfica · Lisboa
 <a href="#" class="service-card-cta">Conhecer tratamento</a>
 </div>
 </div>
-<div class="service-card solid">
+<div class="service-card solid reveal-on-scroll">
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-8 9-10"/></svg></div>
 <div class="service-card-body">
 <h3>Body</h3>
@@ -910,7 +982,7 @@ Benfica · Lisboa
 <a href="#" class="service-card-cta">Conhecer tratamento</a>
 </div>
 </div>
-<div class="service-card solid">
+<div class="service-card solid reveal-on-scroll">
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></div>
 <div class="service-card-body">
 <h3>Skincare</h3>
@@ -918,7 +990,7 @@ Benfica · Lisboa
 <a href="#" class="service-card-cta">Conhecer tratamento</a>
 </div>
 </div>
-<div class="service-card">
+<div class="service-card reveal-on-scroll">
 <img src="wash-chairs.jpg" alt="Cadeiras de lavagem e cuidado capilar do DoubleSpace" style="object-position:center 30%;">
 <div class="tint"></div>
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
@@ -928,7 +1000,7 @@ Benfica · Lisboa
 <a href="#" class="service-card-cta">Conhecer tratamento</a>
 </div>
 </div>
-<div class="service-card">
+<div class="service-card reveal-on-scroll">
 <img src="barber-chairs.jpg" alt="Espaço de barbearia do DoubleSpace" style="object-position:center 70%;">
 <div class="tint"></div>
 <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><path d="M7.5 7.5 19 19M19 5 7.5 16.5"/></svg></div>
@@ -943,39 +1015,39 @@ Benfica · Lisboa
 
 <section class="highlights section-pad">
 <div class="wrap">
-<div class="intro-block" style="margin-bottom:44px;">
+<div class="intro-block reveal-on-scroll" style="margin-bottom:44px;">
 <h2>Encontre o cuidado certo para si.</h2>
 <p>Alguns dos tratamentos mais procurados no DoubleSpace.</p>
 </div>
 <div class="hl-scroll">
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-8 9-10"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
-<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><path d="M7.5 7.5 19 19M19 5 7.5 16.5"/></svg></div><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-8 9-10"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
+<div class="hl-item reveal-on-scroll"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><path d="M7.5 7.5 19 19M19 5 7.5 16.5"/></svg></div><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
 </div>
 </div>
 </section>
 
 <section class="experience section-pad" id="experiencia">
 <div class="wrap">
-<div class="exp-top">
+<div class="exp-top reveal-on-scroll">
 <h2>Mais do que um tratamento.</h2>
 <p>Um momento pensado para cuidar de si, desacelerar e sair ainda mais confiante.</p>
 </div>
 <div class="exp-grid">
-<figure class="big"><img src="facial-room.jpg" alt="Sala de tratamentos do DoubleSpace, ambiente calmo e cuidado"></figure>
-<figure><img src="reception-logo.jpg" alt="Receção do DoubleSpace com a marca em destaque"></figure>
-<figure><img src="wash-chairs.jpg" alt="Zona de lavagem do DoubleSpace"></figure>
+<figure class="big reveal-on-scroll"><img src="facial-room.jpg" alt="Sala de tratamentos do DoubleSpace, ambiente calmo e cuidado"></figure>
+<figure class="reveal-on-scroll"><img src="reception-logo.jpg" alt="Receção do DoubleSpace com a marca em destaque"></figure>
+<figure class="reveal-on-scroll"><img src="wash-chairs.jpg" alt="Zona de lavagem do DoubleSpace"></figure>
 </div>
 </div>
 </section>
 
 <section class="reviews section-pad" id="avaliacoes">
 <div class="wrap">
-<div class="reviews-inner">
+<div class="reviews-inner reveal-on-scroll">
 <h2>O que dizem sobre o DoubleSpace</h2>
 <p class="reviews-note">As avaliações do DoubleSpace estão disponíveis publicamente no Google e no Instagram. Nesta demonstração, preferimos direcioná-lo às fontes originais em vez de reproduzir números ou comentários.</p>
 <div class="reviews-cta">
@@ -991,27 +1063,27 @@ Benfica · Lisboa
 
 <section class="insta section-pad">
 <div class="wrap">
-<div class="insta-top">
+<div class="insta-top reveal-on-scroll">
 <h2>Veja mais do nosso trabalho</h2>
 <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
 </div>
 <div class="insta-grid">
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="interior-manicure.jpg" alt="DoubleSpace no Instagram"></a>
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="reception-logo.jpg" alt="DoubleSpace no Instagram"></a>
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="facial-room.jpg" alt="DoubleSpace no Instagram"></a>
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="lounge-window.jpg" alt="DoubleSpace no Instagram"></a>
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="wash-chairs.jpg" alt="DoubleSpace no Instagram"></a>
-<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="barber-chairs.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="interior-manicure.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="reception-logo.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="facial-room.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="lounge-window.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="wash-chairs.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="reveal-on-scroll"><img src="barber-chairs.jpg" alt="DoubleSpace no Instagram"></a>
 </div>
 </div>
 </section>
 
 <section class="location section-pad" id="localizacao">
 <div class="wrap">
-<div class="intro-block" style="margin-bottom:44px;">
+<div class="intro-block reveal-on-scroll" style="margin-bottom:44px;">
 <h2>Estamos em Benfica.</h2>
 </div>
-<div class="loc-grid">
+<div class="loc-grid reveal-on-scroll">
 <div class="loc-info">
 <div class="loc-row">
 <span class="k">MORADA</span>
@@ -1098,6 +1170,22 @@ const panel = document.getElementById('mobilePanel');
 document.getElementById('navToggle').addEventListener('click', () => panel.classList.add('open'));
 document.getElementById('mobileClose').addEventListener('click', () => panel.classList.remove('open'));
 panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => panel.classList.remove('open')));
+
+// scroll-triggered reveal for sections below the fold
+if('IntersectionObserver' in window){
+const revealEls = document.querySelectorAll('.reveal-on-scroll');
+const io = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('is-visible');
+io.unobserve(entry.target);
+}
+});
+}, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+revealEls.forEach(el => io.observe(el));
+} else {
+document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-visible'));
+}
 </script>
 
 </body>
