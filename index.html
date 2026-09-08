@@ -162,9 +162,6 @@ opacity:0.85;
 nav.main-nav a:hover{opacity:1;}
 header.scrolled nav.main-nav a{color:var(--ink);}
 
-.nav-cta{display:none;}
-@media(min-width:900px){ .nav-cta{display:inline-flex;} }
-
 .nav-toggle{
 display:none;
 flex-direction:column;
@@ -187,21 +184,35 @@ nav.main-nav{display:none;}
 
 /* ---------- HERO ---------- */
 .hero{
-display:grid;
-grid-template-columns:1fr;
+position:relative;
 min-height:100vh;
+display:flex;
+align-items:center;
+color:var(--paper);
+overflow:hidden;
 }
-@media(min-width:900px){
-.hero{grid-template-columns: 0.86fr 1.14fr;}
+.hero-bg{
+position:absolute;
+inset:0;
+z-index:0;
+}
+.hero-bg img{
+width:100%; height:100%;
+object-fit:cover;
+}
+.hero-bg::after{
+content:'';
+position:absolute; inset:0;
+background:linear-gradient(100deg, rgba(28,23,18,0.94) 0%, rgba(28,23,18,0.82) 32%, rgba(28,23,18,0.42) 60%, rgba(28,23,18,0.12) 100%);
 }
 .hero-copy{
-background:var(--ink);
-color:var(--paper);
+position:relative;
+z-index:1;
 display:flex;
 flex-direction:column;
 justify-content:center;
 padding: 140px var(--gutter) 80px;
-position:relative;
+max-width:720px;
 }
 .hero-tag{
 font-size:0.8rem;
@@ -211,11 +222,13 @@ margin-bottom:28px;
 font-weight:600;
 }
 .hero-copy h1{
+color:var(--paper);
 font-size:clamp(2.6rem, 5.2vw, 4.2rem);
 line-height:1.04;
 font-weight:400;
 margin-bottom:28px;
 max-width:11ch;
+text-shadow:0 4px 24px rgba(0,0,0,0.35);
 }
 .hero-copy p{
 font-size:1.05rem;
@@ -240,22 +253,6 @@ color:rgba(251,249,246,0.6);
 width:5px; height:5px; border-radius:50%;
 background:var(--gold-soft);
 }
-.hero-media{
-position:relative;
-min-height:340px;
-overflow:hidden;
-}
-.hero-media img{
-width:100%; height:100%;
-object-fit:cover;
-position:absolute; inset:0;
-}
-.hero-media::after{
-content:'';
-position:absolute; inset:0;
-background:linear-gradient(180deg, rgba(28,23,18,0.05), rgba(28,23,18,0.35));
-}
-
 /* fade-in on load, single orchestrated moment */
 .reveal{
 opacity:0;
@@ -332,9 +329,22 @@ position:relative;
 .presentation-media .frame{
 aspect-ratio:4/5;
 overflow:hidden;
+border-radius:2px;
+box-shadow:0 30px 60px -20px rgba(28,23,18,0.35);
 }
 .presentation-media img{
 width:100%; height:100%; object-fit:cover;
+transition:transform 0.8s cubic-bezier(.22,.68,.32,1);
+}
+.presentation-media:hover img{transform:scale(1.05);}
+.presentation-media::before{
+content:'';
+position:absolute;
+top:-18px; right:-18px;
+width:64px; height:64px;
+border-top:1px solid var(--gold);
+border-right:1px solid var(--gold);
+z-index:-1;
 }
 .presentation-media .badge{
 position:absolute;
@@ -343,6 +353,7 @@ background:var(--ink);
 color:var(--paper);
 padding:26px 30px;
 max-width:230px;
+box-shadow:0 20px 40px -16px rgba(28,23,18,0.5);
 }
 @media(max-width:560px){
 .presentation-media .badge{left:0; bottom:-22px; padding:20px 22px;}
@@ -363,6 +374,14 @@ line-height:1.4;
 
 /* ---------- SERVICES (bento editorial grid) ---------- */
 .services{background:var(--ivory);}
+.services .intro-block{margin-bottom:80px; padding-left:24px; border-left:2px solid var(--gold);}
+.services .intro-block .kicker{
+font-family:'Fraunces', serif;
+font-style:italic;
+font-size:1.05rem;
+color:var(--taupe);
+margin-bottom:14px;
+}
 .service-grid{
 display:grid;
 grid-template-columns:repeat(6, 1fr);
@@ -390,12 +409,24 @@ background:var(--ink);
 .service-card img{
 position:absolute; inset:0;
 width:100%; height:100%; object-fit:cover;
-transition:transform 0.8s ease;
+transition:transform 0.5s ease;
 }
 .service-card .tint{
 position:absolute; inset:0;
-background:linear-gradient(180deg, rgba(28,23,18,0.1) 0%, rgba(28,23,18,0.78) 100%);
+background:linear-gradient(180deg, rgba(28,23,18,0.05) 0%, rgba(28,23,18,0.35) 45%, rgba(28,23,18,0.94) 100%);
 }
+.service-card .icon{
+position:absolute;
+top:20px; left:20px;
+z-index:2;
+width:38px; height:38px;
+display:flex; align-items:center; justify-content:center;
+background:rgba(251,249,246,0.14);
+backdrop-filter:blur(6px);
+border-radius:50%;
+}
+.service-card.solid .icon{background:rgba(28,23,18,0.08);}
+.service-card .icon svg{width:18px; height:18px;}
 .service-card.solid{
 background:var(--nude-soft);
 }
@@ -405,7 +436,7 @@ background:var(--nude-soft);
 background-image:linear-gradient(var(--ink),var(--ink));
 color:var(--ink);
 }
-.service-card:hover img{transform:scale(1.06);}
+.service-card:hover img{transform:scale(1.08);}
 .service-card-body{
 position:absolute; left:0; right:0; bottom:0;
 padding:26px 28px;
@@ -413,16 +444,21 @@ z-index:2;
 }
 .service-card.solid .service-card-body{position:relative; padding:32px 30px; height:100%; display:flex; flex-direction:column; justify-content:flex-end;}
 .service-card h3{
+color:var(--paper);
 font-size:1.4rem;
 font-weight:400;
 margin-bottom:8px;
+text-shadow:0 2px 12px rgba(0,0,0,0.45);
 }
+.service-card.solid h3{color:var(--ink); text-shadow:none;}
 .service-card p{
 font-size:0.88rem;
 max-width:32ch;
 margin-bottom:14px;
-color:rgba(251,249,246,0.85);
+color:rgba(251,249,246,0.9);
+text-shadow:0 1px 8px rgba(0,0,0,0.4);
 }
+.service-card.solid p{text-shadow:none;}
 .service-card.solid p{color:var(--ink-soft);}
 .service-card-cta{
 font-size:0.8rem;
@@ -456,16 +492,29 @@ min-height:150px;
 display:flex;
 flex-direction:column;
 justify-content:space-between;
+transition:transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
+.hl-item:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 34px -18px rgba(28,23,18,0.28);
+border-color:var(--gold-soft);
+}
+.hl-item .hl-icon{
+width:34px; height:34px;
+display:flex; align-items:center; justify-content:center;
+color:var(--gold);
+}
+.hl-item .hl-icon svg{width:22px; height:22px;}
 .hl-item .hl-index{
 font-family:'Fraunces', serif;
 font-style:italic;
 color:var(--gold);
 font-size:0.95rem;
+margin-top:14px;
 }
 .hl-item .hl-name{
 font-size:1.02rem;
-margin-top:26px;
+margin-top:10px;
 }
 
 /* ---------- EXPERIENCE (editorial imagery) ---------- */
@@ -767,7 +816,6 @@ font-size:1.6rem; cursor:pointer;
 <li><a href="#localizacao">Localização</a></li>
 </ul>
 </nav>
-<a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-outline nav-cta">Agendar tratamento</a>
 <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
 <span></span><span></span><span></span>
 </button>
@@ -785,6 +833,9 @@ font-size:1.6rem; cursor:pointer;
 </div>
 
 <section class="hero" id="top">
+<div class="hero-bg">
+<img src="lounge-window.jpg" alt="Espaço de espera do DoubleSpace em Benfica, Lisboa">
+</div>
 <div class="hero-copy">
 <span class="hero-tag reveal d1">DOUBLESPACE — LISBOA</span>
 <h1 class="reveal d2">Beauty, self-care &amp; you</h1>
@@ -797,9 +848,6 @@ font-size:1.6rem; cursor:pointer;
 <span class="dot"></span>
 Benfica · Lisboa
 </div>
-</div>
-<div class="hero-media">
-<img src="lounge-window.jpg" alt="Espaço de espera do DoubleSpace em Benfica, Lisboa">
 </div>
 </section>
 
@@ -828,6 +876,7 @@ Benfica · Lisboa
 <section class="services" id="servicos">
 <div class="wrap section-pad" style="padding-bottom:0;">
 <div class="intro-block">
+<div class="kicker">O que oferecemos</div>
 <h2>Serviços</h2>
 <p>Cuidados pensados para o rosto, o corpo e os detalhes que fazem a diferença.</p>
 </div>
@@ -836,6 +885,7 @@ Benfica · Lisboa
 <div class="service-card wide">
 <img src="facial-room.jpg" alt="Sala de tratamentos faciais do DoubleSpace">
 <div class="tint"></div>
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div>
 <div class="service-card-body">
 <h3>Face</h3>
 <p>Tratamentos faciais e de skincare adaptados a cada tipo de pele.</p>
@@ -845,6 +895,7 @@ Benfica · Lisboa
 <div class="service-card narrow">
 <img src="interior-manicure.jpg" alt="Zona de manicure do DoubleSpace">
 <div class="tint"></div>
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div>
 <div class="service-card-body">
 <h3>Nails</h3>
 <p>Manicure e pedicure com atenção ao detalhe.</p>
@@ -852,6 +903,7 @@ Benfica · Lisboa
 </div>
 </div>
 <div class="service-card solid">
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-8 9-10"/></svg></div>
 <div class="service-card-body">
 <h3>Body</h3>
 <p>Cuidados corporais para relaxar e cuidar da pele.</p>
@@ -859,6 +911,7 @@ Benfica · Lisboa
 </div>
 </div>
 <div class="service-card solid">
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></div>
 <div class="service-card-body">
 <h3>Skincare</h3>
 <p>Rotinas de cuidado de pele com produtos profissionais.</p>
@@ -866,8 +919,9 @@ Benfica · Lisboa
 </div>
 </div>
 <div class="service-card">
-<img src="wash-chairs.jpg" alt="Cadeiras de lavagem e cuidado capilar do DoubleSpace">
+<img src="wash-chairs.jpg" alt="Cadeiras de lavagem e cuidado capilar do DoubleSpace" style="object-position:center 30%;">
 <div class="tint"></div>
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
 <div class="service-card-body">
 <h3>Massagens</h3>
 <p>Momentos de relaxamento e bem-estar.</p>
@@ -875,8 +929,9 @@ Benfica · Lisboa
 </div>
 </div>
 <div class="service-card">
-<img src="barber-chairs.jpg" alt="Espaço de barbearia do DoubleSpace">
+<img src="barber-chairs.jpg" alt="Espaço de barbearia do DoubleSpace" style="object-position:center 70%;">
 <div class="tint"></div>
+<div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><path d="M7.5 7.5 19 19M19 5 7.5 16.5"/></svg></div>
 <div class="service-card-body">
 <h3>Outros tratamentos</h3>
 <p>Barbearia e demais serviços disponíveis no espaço.</p>
@@ -893,13 +948,13 @@ Benfica · Lisboa
 <p>Alguns dos tratamentos mais procurados no DoubleSpace.</p>
 </div>
 <div class="hl-scroll">
-<div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
-<div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
-<div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
-<div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
-<div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
-<div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
-<div class="hl-item"><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.6"/><circle cx="12" cy="18" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="12" r="2.6"/></svg></div><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11Z"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg></div><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 9c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 15c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-8 9-10"/></svg></div><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
+<div class="hl-item"><div class="hl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.2"/><circle cx="6" cy="18" r="2.2"/><path d="M7.5 7.5 19 19M19 5 7.5 16.5"/></svg></div><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
 </div>
 </div>
 </section>
@@ -977,7 +1032,6 @@ Benfica · Lisboa
 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="#C7A874" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="#C7A874" stroke-width="1.3"/></svg>
 <div class="street">Estrada de Benfica 706A</div>
 <div class="city">1500-112 Lisboa</div>
-<a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="btn btn-outline on-dark">Abrir no Google Maps</a>
 </div>
 </div>
 </div>
