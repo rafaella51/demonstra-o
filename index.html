@@ -8,1042 +8,1042 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ivory:#F5F2ED;
-    --paper:#FBF9F6;
-    --ink:#1C1712;
-    --ink-soft:#3A322A;
-    --nude:#D9C6AE;
-    --nude-soft:#EAE0D2;
-    --taupe:#A9927B;
-    --gold:#A67C42;
-    --gold-soft:#C7A874;
-    --line: rgba(28,23,18,0.12);
-    --max: 1240px;
-    --gutter: clamp(24px, 5vw, 80px);
-  }
+:root{
+--ivory:#F5F2ED;
+--paper:#FBF9F6;
+--ink:#1C1712;
+--ink-soft:#3A322A;
+--nude:#D9C6AE;
+--nude-soft:#EAE0D2;
+--taupe:#A9927B;
+--gold:#A67C42;
+--gold-soft:#C7A874;
+--line: rgba(28,23,18,0.12);
+--max: 1240px;
+--gutter: clamp(24px, 5vw, 80px);
+}
 
-  *{margin:0; padding:0; box-sizing:border-box;}
+*{margin:0; padding:0; box-sizing:border-box;}
 
-  html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;}
 
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Manrope', sans-serif;
-    font-weight:400;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
+body{
+background:var(--paper);
+color:var(--ink);
+font-family:'Manrope', sans-serif;
+font-weight:400;
+line-height:1.6;
+-webkit-font-smoothing:antialiased;
+overflow-x:hidden;
+}
 
-  h1,h2,h3,.serif{
-    font-family:'Fraunces', serif;
-    font-weight:500;
-    letter-spacing:-0.01em;
-    color:var(--ink);
-  }
+h1,h2,h3,.serif{
+font-family:'Fraunces', serif;
+font-weight:500;
+letter-spacing:-0.01em;
+color:var(--ink);
+}
 
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%; height:auto;}
-  ul{list-style:none;}
+a{color:inherit; text-decoration:none;}
+img{display:block; max-width:100%; height:auto;}
+ul{list-style:none;}
 
-  .wrap{
-    max-width:var(--max);
-    margin:0 auto;
-    padding-left:var(--gutter);
-    padding-right:var(--gutter);
-  }
+.wrap{
+max-width:var(--max);
+margin:0 auto;
+padding-left:var(--gutter);
+padding-right:var(--gutter);
+}
 
-  section{position:relative;}
+section{position:relative;}
 
-  /* ---------- BUTTONS ---------- */
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:16px 32px;
-    font-family:'Manrope', sans-serif;
-    font-size:0.95rem;
-    font-weight:500;
-    letter-spacing:0.01em;
-    border-radius:2px;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
-    white-space:nowrap;
-  }
-  .btn-primary{
-    background:var(--ink);
-    color:var(--paper);
-  }
-  .btn-primary:hover{background:var(--gold); }
-  .btn-outline{
-    background:transparent;
-    color:var(--ink);
-    border-color:var(--ink);
-  }
-  .btn-outline:hover{
-    background:var(--ink);
-    color:var(--paper);
-  }
-  .btn-outline.on-dark{
-    color:var(--paper);
-    border-color:rgba(251,249,246,0.5);
-  }
-  .btn-outline.on-dark:hover{
-    background:var(--paper);
-    color:var(--ink);
-  }
-  .btn-primary.on-dark{
-    background:var(--gold-soft);
-    color:var(--ink);
-  }
-  .btn-primary.on-dark:hover{
-    background:var(--paper);
-  }
+/* ---------- BUTTONS ---------- */
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:16px 32px;
+font-family:'Manrope', sans-serif;
+font-size:0.95rem;
+font-weight:500;
+letter-spacing:0.01em;
+border-radius:2px;
+border:1px solid transparent;
+cursor:pointer;
+transition:background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
+white-space:nowrap;
+}
+.btn-primary{
+background:var(--ink);
+color:var(--paper);
+}
+.btn-primary:hover{background:var(--gold); }
+.btn-outline{
+background:transparent;
+color:var(--ink);
+border-color:var(--ink);
+}
+.btn-outline:hover{
+background:var(--ink);
+color:var(--paper);
+}
+.btn-outline.on-dark{
+color:var(--paper);
+border-color:rgba(251,249,246,0.5);
+}
+.btn-outline.on-dark:hover{
+background:var(--paper);
+color:var(--ink);
+}
+.btn-primary.on-dark{
+background:var(--gold-soft);
+color:var(--ink);
+}
+.btn-primary.on-dark:hover{
+background:var(--paper);
+}
 
-  .text-link{
-    position:relative;
-    font-size:0.9rem;
-    font-weight:600;
-    padding-bottom:3px;
-    background-image:linear-gradient(var(--ink),var(--ink));
-    background-size:0% 1px;
-    background-repeat:no-repeat;
-    background-position:left bottom;
-    transition:background-size 0.4s ease;
-  }
-  .text-link:hover{background-size:100% 1px;}
-  .text-link.light{
-    background-image:linear-gradient(var(--paper),var(--paper));
-    color:var(--paper);
-  }
+.text-link{
+position:relative;
+font-size:0.9rem;
+font-weight:600;
+padding-bottom:3px;
+background-image:linear-gradient(var(--ink),var(--ink));
+background-size:0% 1px;
+background-repeat:no-repeat;
+background-position:left bottom;
+transition:background-size 0.4s ease;
+}
+.text-link:hover{background-size:100% 1px;}
+.text-link.light{
+background-image:linear-gradient(var(--paper),var(--paper));
+color:var(--paper);
+}
 
-  /* ---------- NAV ---------- */
-  header{
-    position:fixed;
-    top:0; left:0; right:0;
-    z-index:100;
-    padding:22px var(--gutter);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    transition:background 0.4s ease, padding 0.4s ease, box-shadow .4s ease;
-    mix-blend-mode:normal;
-  }
-  header.scrolled{
-    background:rgba(251,249,246,0.92);
-    backdrop-filter: blur(10px);
-    padding-top:14px;
-    padding-bottom:14px;
-    box-shadow:0 1px 0 var(--line);
-  }
-  .logo{
-    font-family:'Fraunces', serif;
-    font-size:1.25rem;
-    letter-spacing:0.06em;
-    color:var(--paper);
-    transition:color .4s ease;
-  }
-  header.scrolled .logo{color:var(--ink);}
+/* ---------- NAV ---------- */
+header{
+position:fixed;
+top:0; left:0; right:0;
+z-index:100;
+padding:22px var(--gutter);
+display:flex;
+align-items:center;
+justify-content:space-between;
+transition:background 0.4s ease, padding 0.4s ease, box-shadow .4s ease;
+mix-blend-mode:normal;
+}
+header.scrolled{
+background:rgba(251,249,246,0.92);
+backdrop-filter: blur(10px);
+padding-top:14px;
+padding-bottom:14px;
+box-shadow:0 1px 0 var(--line);
+}
+.logo{
+font-family:'Fraunces', serif;
+font-size:1.25rem;
+letter-spacing:0.06em;
+color:var(--paper);
+transition:color .4s ease;
+}
+header.scrolled .logo{color:var(--ink);}
 
-  nav.main-nav ul{
-    display:flex;
-    gap:36px;
-  }
-  nav.main-nav a{
-    font-size:0.85rem;
-    font-weight:500;
-    color:var(--paper);
-    transition:color .4s ease, opacity .2s ease;
-    opacity:0.85;
-  }
-  nav.main-nav a:hover{opacity:1;}
-  header.scrolled nav.main-nav a{color:var(--ink);}
+nav.main-nav ul{
+display:flex;
+gap:36px;
+}
+nav.main-nav a{
+font-size:0.85rem;
+font-weight:500;
+color:var(--paper);
+transition:color .4s ease, opacity .2s ease;
+opacity:0.85;
+}
+nav.main-nav a:hover{opacity:1;}
+header.scrolled nav.main-nav a{color:var(--ink);}
 
-  .nav-cta{display:none;}
-  @media(min-width:900px){ .nav-cta{display:inline-flex;} }
+.nav-cta{display:none;}
+@media(min-width:900px){ .nav-cta{display:inline-flex;} }
 
-  .nav-toggle{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    background:none;
-    border:none;
-    cursor:pointer;
-    padding:6px;
-  }
-  .nav-toggle span{
-    width:24px; height:1.5px; background:var(--paper);
-    transition:background .4s ease;
-  }
-  header.scrolled .nav-toggle span{background:var(--ink);}
+.nav-toggle{
+display:none;
+flex-direction:column;
+gap:5px;
+background:none;
+border:none;
+cursor:pointer;
+padding:6px;
+}
+.nav-toggle span{
+width:24px; height:1.5px; background:var(--paper);
+transition:background .4s ease;
+}
+header.scrolled .nav-toggle span{background:var(--ink);}
 
-  @media(max-width:899px){
-    nav.main-nav{display:none;}
-    .nav-toggle{display:flex;}
-  }
+@media(max-width:899px){
+nav.main-nav{display:none;}
+.nav-toggle{display:flex;}
+}
 
-  /* ---------- HERO ---------- */
-  .hero{
-    display:grid;
-    grid-template-columns:1fr;
-    min-height:100vh;
-  }
-  @media(min-width:900px){
-    .hero{grid-template-columns: 0.86fr 1.14fr;}
-  }
-  .hero-copy{
-    background:var(--ink);
-    color:var(--paper);
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding: 140px var(--gutter) 80px;
-    position:relative;
-  }
-  .hero-tag{
-    font-size:0.8rem;
-    letter-spacing:0.14em;
-    color:var(--gold-soft);
-    margin-bottom:28px;
-    font-weight:600;
-  }
-  .hero-copy h1{
-    font-size:clamp(2.6rem, 5.2vw, 4.2rem);
-    line-height:1.04;
-    font-weight:400;
-    margin-bottom:28px;
-    max-width:11ch;
-  }
-  .hero-copy p{
-    font-size:1.05rem;
-    color:rgba(251,249,246,0.78);
-    max-width:38ch;
-    margin-bottom:44px;
-  }
-  .hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:16px;
-    margin-bottom:56px;
-  }
-  .hero-loc{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    font-size:0.82rem;
-    color:rgba(251,249,246,0.6);
-  }
-  .hero-loc .dot{
-    width:5px; height:5px; border-radius:50%;
-    background:var(--gold-soft);
-  }
-  .hero-media{
-    position:relative;
-    min-height:340px;
-    overflow:hidden;
-  }
-  .hero-media img{
-    width:100%; height:100%;
-    object-fit:cover;
-    position:absolute; inset:0;
-  }
-  .hero-media::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(28,23,18,0.05), rgba(28,23,18,0.35));
-  }
+/* ---------- HERO ---------- */
+.hero{
+display:grid;
+grid-template-columns:1fr;
+min-height:100vh;
+}
+@media(min-width:900px){
+.hero{grid-template-columns: 0.86fr 1.14fr;}
+}
+.hero-copy{
+background:var(--ink);
+color:var(--paper);
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding: 140px var(--gutter) 80px;
+position:relative;
+}
+.hero-tag{
+font-size:0.8rem;
+letter-spacing:0.14em;
+color:var(--gold-soft);
+margin-bottom:28px;
+font-weight:600;
+}
+.hero-copy h1{
+font-size:clamp(2.6rem, 5.2vw, 4.2rem);
+line-height:1.04;
+font-weight:400;
+margin-bottom:28px;
+max-width:11ch;
+}
+.hero-copy p{
+font-size:1.05rem;
+color:rgba(251,249,246,0.78);
+max-width:38ch;
+margin-bottom:44px;
+}
+.hero-actions{
+display:flex;
+flex-wrap:wrap;
+gap:16px;
+margin-bottom:56px;
+}
+.hero-loc{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:0.82rem;
+color:rgba(251,249,246,0.6);
+}
+.hero-loc .dot{
+width:5px; height:5px; border-radius:50%;
+background:var(--gold-soft);
+}
+.hero-media{
+position:relative;
+min-height:340px;
+overflow:hidden;
+}
+.hero-media img{
+width:100%; height:100%;
+object-fit:cover;
+position:absolute; inset:0;
+}
+.hero-media::after{
+content:'';
+position:absolute; inset:0;
+background:linear-gradient(180deg, rgba(28,23,18,0.05), rgba(28,23,18,0.35));
+}
 
-  /* fade-in on load, single orchestrated moment */
-  .reveal{
-    opacity:0;
-    transform:translateY(18px);
-    animation:revealUp 0.9s cubic-bezier(.22,.68,.32,1) forwards;
-  }
-  .reveal.d1{animation-delay:.12s;}
-  .reveal.d2{animation-delay:.26s;}
-  .reveal.d3{animation-delay:.4s;}
-  .reveal.d4{animation-delay:.54s;}
-  @keyframes revealUp{
-    to{opacity:1; transform:translateY(0);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .reveal{animation:none; opacity:1; transform:none;}
-    html{scroll-behavior:auto;}
-  }
+/* fade-in on load, single orchestrated moment */
+.reveal{
+opacity:0;
+transform:translateY(18px);
+animation:revealUp 0.9s cubic-bezier(.22,.68,.32,1) forwards;
+}
+.reveal.d1{animation-delay:.12s;}
+.reveal.d2{animation-delay:.26s;}
+.reveal.d3{animation-delay:.4s;}
+.reveal.d4{animation-delay:.54s;}
+@keyframes revealUp{
+to{opacity:1; transform:translateY(0);}
+}
+@media (prefers-reduced-motion: reduce){
+.reveal{animation:none; opacity:1; transform:none;}
+html{scroll-behavior:auto;}
+}
 
-  /* ---------- SECTION HEADERS ---------- */
-  .section-pad{padding:120px 0;}
-  @media(max-width:700px){.section-pad{padding:80px 0;}}
+/* ---------- SECTION HEADERS ---------- */
+.section-pad{padding:120px 0;}
+@media(max-width:700px){.section-pad{padding:80px 0;}}
 
-  .intro-block{
-    max-width:640px;
-    margin-bottom:64px;
-  }
-  .intro-block h2{
-    font-size:clamp(2rem, 3.4vw, 2.8rem);
-    font-weight:400;
-    line-height:1.15;
-    margin-bottom:22px;
-  }
-  .intro-block p{
-    color:var(--ink-soft);
-    font-size:1.02rem;
-    max-width:52ch;
-  }
+.intro-block{
+max-width:640px;
+margin-bottom:64px;
+}
+.intro-block h2{
+font-size:clamp(2rem, 3.4vw, 2.8rem);
+font-weight:400;
+line-height:1.15;
+margin-bottom:22px;
+}
+.intro-block p{
+color:var(--ink-soft);
+font-size:1.02rem;
+max-width:52ch;
+}
 
-  /* ---------- PRESENTATION ---------- */
-  .presentation{
-    background:var(--paper);
-  }
-  .presentation-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:56px;
-    align-items:center;
-  }
-  @media(min-width:900px){
-    .presentation-grid{grid-template-columns: 1fr 1.05fr; gap:80px;}
-  }
-  .presentation-text .kicker{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    font-size:1.15rem;
-    color:var(--taupe);
-    margin-bottom:20px;
-  }
-  .presentation-text h2{
-    font-size:clamp(1.9rem, 3vw, 2.5rem);
-    font-weight:400;
-    line-height:1.18;
-    margin-bottom:26px;
-  }
-  .presentation-text p{
-    color:var(--ink-soft);
-    font-size:1.02rem;
-    max-width:46ch;
-    margin-bottom:18px;
-  }
-  .presentation-media{
-    position:relative;
-  }
-  .presentation-media .frame{
-    aspect-ratio:4/5;
-    overflow:hidden;
-  }
-  .presentation-media img{
-    width:100%; height:100%; object-fit:cover;
-  }
-  .presentation-media .badge{
-    position:absolute;
-    left:-28px; bottom:-28px;
-    background:var(--ink);
-    color:var(--paper);
-    padding:26px 30px;
-    max-width:230px;
-  }
-  @media(max-width:560px){
-    .presentation-media .badge{left:0; bottom:-22px; padding:20px 22px;}
-  }
-  .presentation-media .badge .num{
-    font-family:'Fraunces', serif;
-    font-size:2rem;
-    color:var(--gold-soft);
-    line-height:1;
-    margin-bottom:6px;
-    display:block;
-  }
-  .presentation-media .badge .lbl{
-    font-size:0.82rem;
-    color:rgba(251,249,246,0.75);
-    line-height:1.4;
-  }
+/* ---------- PRESENTATION ---------- */
+.presentation{
+background:var(--paper);
+}
+.presentation-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:56px;
+align-items:center;
+}
+@media(min-width:900px){
+.presentation-grid{grid-template-columns: 1fr 1.05fr; gap:80px;}
+}
+.presentation-text .kicker{
+font-family:'Fraunces', serif;
+font-style:italic;
+font-size:1.15rem;
+color:var(--taupe);
+margin-bottom:20px;
+}
+.presentation-text h2{
+font-size:clamp(1.9rem, 3vw, 2.5rem);
+font-weight:400;
+line-height:1.18;
+margin-bottom:26px;
+}
+.presentation-text p{
+color:var(--ink-soft);
+font-size:1.02rem;
+max-width:46ch;
+margin-bottom:18px;
+}
+.presentation-media{
+position:relative;
+}
+.presentation-media .frame{
+aspect-ratio:4/5;
+overflow:hidden;
+}
+.presentation-media img{
+width:100%; height:100%; object-fit:cover;
+}
+.presentation-media .badge{
+position:absolute;
+left:-28px; bottom:-28px;
+background:var(--ink);
+color:var(--paper);
+padding:26px 30px;
+max-width:230px;
+}
+@media(max-width:560px){
+.presentation-media .badge{left:0; bottom:-22px; padding:20px 22px;}
+}
+.presentation-media .badge .num{
+font-family:'Fraunces', serif;
+font-size:2rem;
+color:var(--gold-soft);
+line-height:1;
+margin-bottom:6px;
+display:block;
+}
+.presentation-media .badge .lbl{
+font-size:0.82rem;
+color:rgba(251,249,246,0.75);
+line-height:1.4;
+}
 
-  /* ---------- SERVICES (bento editorial grid) ---------- */
-  .services{background:var(--ivory);}
-  .service-grid{
-    display:grid;
-    grid-template-columns:repeat(6, 1fr);
-    grid-auto-rows:220px;
-    gap:2px;
-    background:var(--ink);
-  }
-  .service-card{
-    position:relative;
-    grid-column:span 6;
-    grid-row:span 1;
-    overflow:hidden;
-    color:var(--paper);
-    background:var(--ink);
-  }
-  @media(min-width:700px){
-    .service-card{grid-column:span 3;}
-    .service-card.wide{grid-column:span 4; grid-row:span 2;}
-    .service-card.narrow{grid-column:span 2; grid-row:span 2;}
-  }
-  @media(min-width:700px) and (max-width:999px){
-    .service-card.wide{grid-column:span 6; grid-row:span 2;}
-    .service-card.narrow{grid-column:span 3; grid-row:span 1;}
-  }
-  .service-card img{
-    position:absolute; inset:0;
-    width:100%; height:100%; object-fit:cover;
-    transition:transform 0.8s ease;
-  }
-  .service-card .tint{
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(28,23,18,0.1) 0%, rgba(28,23,18,0.78) 100%);
-  }
-  .service-card.solid{
-    background:var(--nude-soft);
-  }
-  .service-card.solid .tint{display:none;}
-  .service-card.solid{color:var(--ink);}
-  .service-card.solid .service-card-cta{
-    background-image:linear-gradient(var(--ink),var(--ink));
-    color:var(--ink);
-  }
-  .service-card:hover img{transform:scale(1.06);}
-  .service-card-body{
-    position:absolute; left:0; right:0; bottom:0;
-    padding:26px 28px;
-    z-index:2;
-  }
-  .service-card.solid .service-card-body{position:relative; padding:32px 30px; height:100%; display:flex; flex-direction:column; justify-content:flex-end;}
-  .service-card h3{
-    font-size:1.4rem;
-    font-weight:400;
-    margin-bottom:8px;
-  }
-  .service-card p{
-    font-size:0.88rem;
-    max-width:32ch;
-    margin-bottom:14px;
-    color:rgba(251,249,246,0.85);
-  }
-  .service-card.solid p{color:var(--ink-soft);}
-  .service-card-cta{
-    font-size:0.8rem;
-    font-weight:600;
-    background-image:linear-gradient(var(--paper),var(--paper));
-    background-size:0% 1px;
-    background-repeat:no-repeat;
-    background-position:left bottom;
-    padding-bottom:2px;
-    transition:background-size .4s ease;
-  }
-  .service-card:hover .service-card-cta{background-size:100% 1px;}
+/* ---------- SERVICES (bento editorial grid) ---------- */
+.services{background:var(--ivory);}
+.service-grid{
+display:grid;
+grid-template-columns:repeat(6, 1fr);
+grid-auto-rows:220px;
+gap:2px;
+background:var(--ink);
+}
+.service-card{
+position:relative;
+grid-column:span 6;
+grid-row:span 1;
+overflow:hidden;
+color:var(--paper);
+background:var(--ink);
+}
+@media(min-width:700px){
+.service-card{grid-column:span 3;}
+.service-card.wide{grid-column:span 4; grid-row:span 2;}
+.service-card.narrow{grid-column:span 2; grid-row:span 2;}
+}
+@media(min-width:700px) and (max-width:999px){
+.service-card.wide{grid-column:span 6; grid-row:span 2;}
+.service-card.narrow{grid-column:span 3; grid-row:span 1;}
+}
+.service-card img{
+position:absolute; inset:0;
+width:100%; height:100%; object-fit:cover;
+transition:transform 0.8s ease;
+}
+.service-card .tint{
+position:absolute; inset:0;
+background:linear-gradient(180deg, rgba(28,23,18,0.1) 0%, rgba(28,23,18,0.78) 100%);
+}
+.service-card.solid{
+background:var(--nude-soft);
+}
+.service-card.solid .tint{display:none;}
+.service-card.solid{color:var(--ink);}
+.service-card.solid .service-card-cta{
+background-image:linear-gradient(var(--ink),var(--ink));
+color:var(--ink);
+}
+.service-card:hover img{transform:scale(1.06);}
+.service-card-body{
+position:absolute; left:0; right:0; bottom:0;
+padding:26px 28px;
+z-index:2;
+}
+.service-card.solid .service-card-body{position:relative; padding:32px 30px; height:100%; display:flex; flex-direction:column; justify-content:flex-end;}
+.service-card h3{
+font-size:1.4rem;
+font-weight:400;
+margin-bottom:8px;
+}
+.service-card p{
+font-size:0.88rem;
+max-width:32ch;
+margin-bottom:14px;
+color:rgba(251,249,246,0.85);
+}
+.service-card.solid p{color:var(--ink-soft);}
+.service-card-cta{
+font-size:0.8rem;
+font-weight:600;
+background-image:linear-gradient(var(--paper),var(--paper));
+background-size:0% 1px;
+background-repeat:no-repeat;
+background-position:left bottom;
+padding-bottom:2px;
+transition:background-size .4s ease;
+}
+.service-card:hover .service-card-cta{background-size:100% 1px;}
 
-  /* ---------- HIGHLIGHTS strip ---------- */
-  .highlights{background:var(--paper);}
-  .hl-scroll{
-    display:flex;
-    gap:16px;
-    overflow-x:auto;
-    padding-bottom:12px;
-    scrollbar-width:none;
-  }
-  .hl-scroll::-webkit-scrollbar{display:none;}
-  .hl-item{
-    flex:0 0 auto;
-    width:180px;
-    padding:30px 22px;
-    background:var(--ivory);
-    border:1px solid var(--line);
-    min-height:150px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-  }
-  .hl-item .hl-index{
-    font-family:'Fraunces', serif;
-    font-style:italic;
-    color:var(--gold);
-    font-size:0.95rem;
-  }
-  .hl-item .hl-name{
-    font-size:1.02rem;
-    margin-top:26px;
-  }
+/* ---------- HIGHLIGHTS strip ---------- */
+.highlights{background:var(--paper);}
+.hl-scroll{
+display:flex;
+gap:16px;
+overflow-x:auto;
+padding-bottom:12px;
+scrollbar-width:none;
+}
+.hl-scroll::-webkit-scrollbar{display:none;}
+.hl-item{
+flex:0 0 auto;
+width:180px;
+padding:30px 22px;
+background:var(--ivory);
+border:1px solid var(--line);
+min-height:150px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+.hl-item .hl-index{
+font-family:'Fraunces', serif;
+font-style:italic;
+color:var(--gold);
+font-size:0.95rem;
+}
+.hl-item .hl-name{
+font-size:1.02rem;
+margin-top:26px;
+}
 
-  /* ---------- EXPERIENCE (editorial imagery) ---------- */
-  .experience{background:var(--ink); color:var(--paper);}
-  .exp-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    gap:40px;
-    margin-bottom:60px;
-    flex-wrap:wrap;
-  }
-  .exp-top h2{
-    color:var(--paper);
-    font-size:clamp(2rem, 3.4vw, 2.8rem);
-    font-weight:400;
-    max-width:14ch;
-    line-height:1.15;
-  }
-  .exp-top p{
-    color:rgba(251,249,246,0.72);
-    max-width:38ch;
-    font-size:1.02rem;
-  }
-  .exp-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  @media(min-width:800px){
-    .exp-grid{
-      grid-template-columns: 1.4fr 1fr;
-      grid-template-rows: 260px 260px;
-    }
-    .exp-grid .big{grid-row:span 2;}
-  }
-  .exp-grid figure{
-    overflow:hidden;
-    height:100%;
-  }
-  .exp-grid img{width:100%; height:100%; object-fit:cover;}
+/* ---------- EXPERIENCE (editorial imagery) ---------- */
+.experience{background:var(--ink); color:var(--paper);}
+.exp-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+gap:40px;
+margin-bottom:60px;
+flex-wrap:wrap;
+}
+.exp-top h2{
+color:var(--paper);
+font-size:clamp(2rem, 3.4vw, 2.8rem);
+font-weight:400;
+max-width:14ch;
+line-height:1.15;
+}
+.exp-top p{
+color:rgba(251,249,246,0.72);
+max-width:38ch;
+font-size:1.02rem;
+}
+.exp-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
+}
+@media(min-width:800px){
+.exp-grid{
+grid-template-columns: 1.4fr 1fr;
+grid-template-rows: 260px 260px;
+}
+.exp-grid .big{grid-row:span 2;}
+}
+.exp-grid figure{
+overflow:hidden;
+height:100%;
+}
+.exp-grid img{width:100%; height:100%; object-fit:cover;}
 
-  /* ---------- REVIEWS ---------- */
-  .reviews{background:var(--nude-soft);}
-  .reviews-inner{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:28px;
-  }
-  .reviews h2{
-    font-size:clamp(1.9rem, 3vw, 2.5rem);
-    font-weight:400;
-    max-width:16ch;
-  }
-  .reviews-note{
-    color:var(--ink-soft);
-    max-width:52ch;
-    font-size:1.02rem;
-  }
-  .reviews-cta{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    flex-wrap:wrap;
-  }
-  .review-mark{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:14px 20px;
-    background:var(--paper);
-    border:1px solid var(--line);
-  }
-  .review-mark .g{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    font-size:1.3rem;
-    color:var(--gold);
-  }
-  .review-mark .txt{font-size:0.85rem; color:var(--ink-soft);}
+/* ---------- REVIEWS ---------- */
+.reviews{background:var(--nude-soft);}
+.reviews-inner{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+gap:28px;
+}
+.reviews h2{
+font-size:clamp(1.9rem, 3vw, 2.5rem);
+font-weight:400;
+max-width:16ch;
+}
+.reviews-note{
+color:var(--ink-soft);
+max-width:52ch;
+font-size:1.02rem;
+}
+.reviews-cta{
+display:flex;
+align-items:center;
+gap:18px;
+flex-wrap:wrap;
+}
+.review-mark{
+display:flex;
+align-items:center;
+gap:10px;
+padding:14px 20px;
+background:var(--paper);
+border:1px solid var(--line);
+}
+.review-mark .g{
+font-family:'Fraunces', serif;
+font-weight:600;
+font-size:1.3rem;
+color:var(--gold);
+}
+.review-mark .txt{font-size:0.85rem; color:var(--ink-soft);}
 
-  /* ---------- INSTAGRAM ---------- */
-  .insta{background:var(--paper);}
-  .insta-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    flex-wrap:wrap;
-    gap:24px;
-    margin-bottom:44px;
-  }
-  .insta-top h2{
-    font-size:clamp(1.9rem, 3vw, 2.5rem);
-    font-weight:400;
-  }
-  .insta-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:8px;
-  }
-  @media(min-width:700px){
-    .insta-grid{grid-template-columns:repeat(6, 1fr);}
-  }
-  .insta-grid a{
-    position:relative;
-    aspect-ratio:1/1;
-    overflow:hidden;
-    display:block;
-  }
-  .insta-grid img{
-    width:100%; height:100%; object-fit:cover;
-    transition:transform .6s ease, filter .6s ease;
-  }
-  .insta-grid a:hover img{transform:scale(1.05);}
-  .insta-grid a::after{
-    content:'';
-    position:absolute; inset:0;
-    background:rgba(28,23,18,0);
-    transition:background .4s ease;
-  }
-  .insta-grid a:hover::after{background:rgba(28,23,18,0.12);}
+/* ---------- INSTAGRAM ---------- */
+.insta{background:var(--paper);}
+.insta-top{
+display:flex;
+justify-content:space-between;
+align-items:flex-end;
+flex-wrap:wrap;
+gap:24px;
+margin-bottom:44px;
+}
+.insta-top h2{
+font-size:clamp(1.9rem, 3vw, 2.5rem);
+font-weight:400;
+}
+.insta-grid{
+display:grid;
+grid-template-columns:repeat(2, 1fr);
+gap:8px;
+}
+@media(min-width:700px){
+.insta-grid{grid-template-columns:repeat(6, 1fr);}
+}
+.insta-grid a{
+position:relative;
+aspect-ratio:1/1;
+overflow:hidden;
+display:block;
+}
+.insta-grid img{
+width:100%; height:100%; object-fit:cover;
+transition:transform .6s ease, filter .6s ease;
+}
+.insta-grid a:hover img{transform:scale(1.05);}
+.insta-grid a::after{
+content:'';
+position:absolute; inset:0;
+background:rgba(28,23,18,0);
+transition:background .4s ease;
+}
+.insta-grid a:hover::after{background:rgba(28,23,18,0.12);}
 
-  /* ---------- LOCATION ---------- */
-  .location{background:var(--ivory);}
-  .loc-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:0;
-    border:1px solid var(--line);
-  }
-  @media(min-width:850px){
-    .loc-grid{grid-template-columns:1fr 1fr;}
-  }
-  .loc-info{
-    padding:64px var(--gutter);
-    background:var(--paper);
-  }
-  @media(min-width:850px){ .loc-info{padding:64px 64px;} }
-  .loc-info h2{
-    font-size:clamp(1.9rem, 3vw, 2.4rem);
-    font-weight:400;
-    margin-bottom:34px;
-  }
-  .loc-row{
-    display:flex;
-    gap:18px;
-    padding:18px 0;
-    border-top:1px solid var(--line);
-  }
-  .loc-row:last-of-type{border-bottom:1px solid var(--line);}
-  .loc-row .k{
-    font-size:0.78rem;
-    letter-spacing:0.06em;
-    color:var(--taupe);
-    width:110px;
-    flex:0 0 auto;
-    padding-top:2px;
-  }
-  .loc-row .v{
-    font-size:1rem;
-    color:var(--ink);
-  }
-  .loc-info .btn{margin-top:34px;}
-  .loc-map{
-    position:relative;
-    min-height:340px;
-    background:var(--ink);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
-  }
-  .loc-map .pin-wrap{
-    position:relative;
-    z-index:2;
-    text-align:center;
-    color:var(--paper);
-    padding:32px;
-  }
-  .loc-map svg{width:38px; height:38px; margin:0 auto 18px;}
-  .loc-map .street{
-    font-family:'Fraunces', serif;
-    font-size:1.3rem;
-    margin-bottom:8px;
-  }
-  .loc-map .city{
-    font-size:0.88rem;
-    color:rgba(251,249,246,0.65);
-    margin-bottom:26px;
-  }
-  .loc-map::before{
-    content:'';
-    position:absolute; inset:0;
-    background-image:
-      repeating-linear-gradient(0deg, rgba(251,249,246,0.05) 0px, rgba(251,249,246,0.05) 1px, transparent 1px, transparent 64px),
-      repeating-linear-gradient(90deg, rgba(251,249,246,0.05) 0px, rgba(251,249,246,0.05) 1px, transparent 1px, transparent 64px);
-  }
+/* ---------- LOCATION ---------- */
+.location{background:var(--ivory);}
+.loc-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:0;
+border:1px solid var(--line);
+}
+@media(min-width:850px){
+.loc-grid{grid-template-columns:1fr 1fr;}
+}
+.loc-info{
+padding:64px var(--gutter);
+background:var(--paper);
+}
+@media(min-width:850px){ .loc-info{padding:64px 64px;} }
+.loc-info h2{
+font-size:clamp(1.9rem, 3vw, 2.4rem);
+font-weight:400;
+margin-bottom:34px;
+}
+.loc-row{
+display:flex;
+gap:18px;
+padding:18px 0;
+border-top:1px solid var(--line);
+}
+.loc-row:last-of-type{border-bottom:1px solid var(--line);}
+.loc-row .k{
+font-size:0.78rem;
+letter-spacing:0.06em;
+color:var(--taupe);
+width:110px;
+flex:0 0 auto;
+padding-top:2px;
+}
+.loc-row .v{
+font-size:1rem;
+color:var(--ink);
+}
+.loc-info .btn{margin-top:34px;}
+.loc-map{
+position:relative;
+min-height:340px;
+background:var(--ink);
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+.loc-map .pin-wrap{
+position:relative;
+z-index:2;
+text-align:center;
+color:var(--paper);
+padding:32px;
+}
+.loc-map svg{width:38px; height:38px; margin:0 auto 18px;}
+.loc-map .street{
+font-family:'Fraunces', serif;
+font-size:1.3rem;
+margin-bottom:8px;
+}
+.loc-map .city{
+font-size:0.88rem;
+color:rgba(251,249,246,0.65);
+margin-bottom:26px;
+}
+.loc-map::before{
+content:'';
+position:absolute; inset:0;
+background-image:
+repeating-linear-gradient(0deg, rgba(251,249,246,0.05) 0px, rgba(251,249,246,0.05) 1px, transparent 1px, transparent 64px),
+repeating-linear-gradient(90deg, rgba(251,249,246,0.05) 0px, rgba(251,249,246,0.05) 1px, transparent 1px, transparent 64px);
+}
 
-  /* ---------- FINAL CTA ---------- */
-  .final-cta{
-    background:var(--ink);
-    color:var(--paper);
-    text-align:center;
-    padding:150px var(--gutter);
-  }
-  .final-cta h2{
-    color:var(--paper);
-    font-size:clamp(2.2rem, 5vw, 3.6rem);
-    font-weight:400;
-    max-width:14ch;
-    margin:0 auto 40px;
-    line-height:1.1;
-  }
-  .final-cta .actions{
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    flex-wrap:wrap;
-  }
+/* ---------- FINAL CTA ---------- */
+.final-cta{
+background:var(--ink);
+color:var(--paper);
+text-align:center;
+padding:150px var(--gutter);
+}
+.final-cta h2{
+color:var(--paper);
+font-size:clamp(2.2rem, 5vw, 3.6rem);
+font-weight:400;
+max-width:14ch;
+margin:0 auto 40px;
+line-height:1.1;
+}
+.final-cta .actions{
+display:flex;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
+}
 
-  /* ---------- FOOTER ---------- */
-  footer{
-    background:var(--paper);
-    border-top:1px solid var(--line);
-    padding:64px var(--gutter) 36px;
-  }
-  .footer-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:44px;
-    margin-bottom:56px;
-  }
-  @media(min-width:800px){
-    .footer-grid{grid-template-columns: 1.2fr 1fr 1fr 1fr;}
-  }
-  .footer-logo{
-    font-family:'Fraunces', serif;
-    font-size:1.3rem;
-    letter-spacing:0.06em;
-    margin-bottom:16px;
-  }
-  .footer-tag{
-    color:var(--ink-soft);
-    font-size:0.92rem;
-    max-width:30ch;
-  }
-  .footer-col .head{
-    font-size:0.78rem;
-    letter-spacing:0.06em;
-    color:var(--taupe);
-    margin-bottom:18px;
-  }
-  .footer-col li{margin-bottom:12px; font-size:0.92rem;}
-  .footer-col a:hover{color:var(--gold);}
-  .footer-bottom{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:12px;
-    padding-top:26px;
-    border-top:1px solid var(--line);
-    font-size:0.8rem;
-    color:var(--taupe);
-  }
+/* ---------- FOOTER ---------- */
+footer{
+background:var(--paper);
+border-top:1px solid var(--line);
+padding:64px var(--gutter) 36px;
+}
+.footer-grid{
+display:grid;
+grid-template-columns:1fr;
+gap:44px;
+margin-bottom:56px;
+}
+@media(min-width:800px){
+.footer-grid{grid-template-columns: 1.2fr 1fr 1fr 1fr;}
+}
+.footer-logo{
+font-family:'Fraunces', serif;
+font-size:1.3rem;
+letter-spacing:0.06em;
+margin-bottom:16px;
+}
+.footer-tag{
+color:var(--ink-soft);
+font-size:0.92rem;
+max-width:30ch;
+}
+.footer-col .head{
+font-size:0.78rem;
+letter-spacing:0.06em;
+color:var(--taupe);
+margin-bottom:18px;
+}
+.footer-col li{margin-bottom:12px; font-size:0.92rem;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:12px;
+padding-top:26px;
+border-top:1px solid var(--line);
+font-size:0.8rem;
+color:var(--taupe);
+}
 
-  /* mobile nav panel */
-  .mobile-panel{
-    position:fixed; inset:0;
-    background:var(--ink);
-    color:var(--paper);
-    z-index:200;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding:0 var(--gutter);
-    transform:translateY(-100%);
-    transition:transform .5s cubic-bezier(.22,.68,.32,1);
-  }
-  .mobile-panel.open{transform:translateY(0);}
-  .mobile-panel ul{display:flex; flex-direction:column; gap:26px; margin-bottom:40px;}
-  .mobile-panel a{font-family:'Fraunces', serif; font-size:1.8rem; font-weight:400;}
-  .mobile-close{
-    position:absolute; top:24px; right:var(--gutter);
-    background:none; border:none; color:var(--paper);
-    font-size:1.6rem; cursor:pointer;
-  }
+/* mobile nav panel */
+.mobile-panel{
+position:fixed; inset:0;
+background:var(--ink);
+color:var(--paper);
+z-index:200;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:0 var(--gutter);
+transform:translateY(-100%);
+transition:transform .5s cubic-bezier(.22,.68,.32,1);
+}
+.mobile-panel.open{transform:translateY(0);}
+.mobile-panel ul{display:flex; flex-direction:column; gap:26px; margin-bottom:40px;}
+.mobile-panel a{font-family:'Fraunces', serif; font-size:1.8rem; font-weight:400;}
+.mobile-close{
+position:absolute; top:24px; right:var(--gutter);
+background:none; border:none; color:var(--paper);
+font-size:1.6rem; cursor:pointer;
+}
 </style>
 </head>
 <body>
 
 <header id="siteHeader">
-  <a href="#top" class="logo">DoubleSpace</a>
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#experiencia">Experiência</a></li>
-      <li><a href="#avaliacoes">Avaliações</a></li>
-      <li><a href="#localizacao">Localização</a></li>
-    </ul>
-  </nav>
-  <a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-outline nav-cta">Agendar tratamento</a>
-  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
-    <span></span><span></span><span></span>
-  </button>
+<a href="#top" class="logo">DoubleSpace</a>
+<nav class="main-nav">
+<ul>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#experiencia">Experiência</a></li>
+<li><a href="#avaliacoes">Avaliações</a></li>
+<li><a href="#localizacao">Localização</a></li>
+</ul>
+</nav>
+<a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-outline nav-cta">Agendar tratamento</a>
+<button class="nav-toggle" id="navToggle" aria-label="Abrir menu">
+<span></span><span></span><span></span>
+</button>
 </header>
 
 <div class="mobile-panel" id="mobilePanel">
-  <button class="mobile-close" id="mobileClose" aria-label="Fechar menu">&times;</button>
-  <ul>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#experiencia">Experiência</a></li>
-    <li><a href="#avaliacoes">Avaliações</a></li>
-    <li><a href="#localizacao">Localização</a></li>
-  </ul>
-  <a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark" style="width:fit-content;">Agendar tratamento</a>
+<button class="mobile-close" id="mobileClose" aria-label="Fechar menu">&times;</button>
+<ul>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#experiencia">Experiência</a></li>
+<li><a href="#avaliacoes">Avaliações</a></li>
+<li><a href="#localizacao">Localização</a></li>
+</ul>
+<a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark" style="width:fit-content;">Agendar tratamento</a>
 </div>
 
 <section class="hero" id="top">
-  <div class="hero-copy">
-    <span class="hero-tag reveal d1">DOUBLESPACE — LISBOA</span>
-    <h1 class="reveal d2">Beauty, self-care &amp; you</h1>
-    <p class="reveal d3">Um espaço dedicado à beleza, ao cuidado e ao seu bem-estar em Lisboa.</p>
-    <div class="hero-actions reveal d4">
-      <a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark">Agendar tratamento</a>
-      <a href="#servicos" class="btn btn-outline on-dark">Conhecer serviços</a>
-    </div>
-    <div class="hero-loc reveal d4">
-      <span class="dot"></span>
-      Benfica · Lisboa
-    </div>
-  </div>
-  <div class="hero-media">
-    <img src="assets/lounge-window.jpg" alt="Espaço de espera do DoubleSpace em Benfica, Lisboa">
-  </div>
+<div class="hero-copy">
+<span class="hero-tag reveal d1">DOUBLESPACE — LISBOA</span>
+<h1 class="reveal d2">Beauty, self-care &amp; you</h1>
+<p class="reveal d3">Um espaço dedicado à beleza, ao cuidado e ao seu bem-estar em Lisboa.</p>
+<div class="hero-actions reveal d4">
+<a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark">Agendar tratamento</a>
+<a href="#servicos" class="btn btn-outline on-dark">Conhecer serviços</a>
+</div>
+<div class="hero-loc reveal d4">
+<span class="dot"></span>
+Benfica · Lisboa
+</div>
+</div>
+<div class="hero-media">
+<img src="lounge-window.jpg" alt="Espaço de espera do DoubleSpace em Benfica, Lisboa">
+</div>
 </section>
 
 <section class="presentation section-pad">
-  <div class="wrap">
-    <div class="presentation-grid">
-      <div class="presentation-text">
-        <div class="kicker">O conceito</div>
-        <h2>Um espaço para cuidar de si.</h2>
-        <p>O DoubleSpace reúne, num só endereço em Benfica, diferentes cuidados de beleza e bem-estar — pensados para quem procura um momento de atenção genuína, sem pressa e sem excessos.</p>
-        <p>Um lugar simples de encontrar e fácil de voltar, onde cada visita é tratada com o mesmo cuidado.</p>
-      </div>
-      <div class="presentation-media">
-        <div class="frame">
-          <img src="assets/interior-manicure.jpg" alt="Interior do salão DoubleSpace com zona de manicure e ambiente elegante">
-        </div>
-        <div class="badge">
-          <span class="num">Est. Benfica</span>
-          <span class="lbl">Estrada de Benfica 706A, Lisboa</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="presentation-grid">
+<div class="presentation-text">
+<div class="kicker">O conceito</div>
+<h2>Um espaço para cuidar de si.</h2>
+<p>O DoubleSpace reúne, num só endereço em Benfica, diferentes cuidados de beleza e bem-estar — pensados para quem procura um momento de atenção genuína, sem pressa e sem excessos.</p>
+<p>Um lugar simples de encontrar e fácil de voltar, onde cada visita é tratada com o mesmo cuidado.</p>
+</div>
+<div class="presentation-media">
+<div class="frame">
+<img src="interior-manicure.jpg" alt="Interior do salão DoubleSpace com zona de manicure e ambiente elegante">
+</div>
+<div class="badge">
+<span class="num">Est. Benfica</span>
+<span class="lbl">Estrada de Benfica 706A, Lisboa</span>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <section class="services" id="servicos">
-  <div class="wrap section-pad" style="padding-bottom:0;">
-    <div class="intro-block">
-      <h2>Serviços</h2>
-      <p>Cuidados pensados para o rosto, o corpo e os detalhes que fazem a diferença.</p>
-    </div>
-  </div>
-  <div class="service-grid">
-    <div class="service-card wide">
-      <img src="assets/facial-room.jpg" alt="Sala de tratamentos faciais do DoubleSpace">
-      <div class="tint"></div>
-      <div class="service-card-body">
-        <h3>Face</h3>
-        <p>Tratamentos faciais e de skincare adaptados a cada tipo de pele.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-    <div class="service-card narrow">
-      <img src="assets/interior-manicure.jpg" alt="Zona de manicure do DoubleSpace">
-      <div class="tint"></div>
-      <div class="service-card-body">
-        <h3>Nails</h3>
-        <p>Manicure e pedicure com atenção ao detalhe.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-    <div class="service-card solid">
-      <div class="service-card-body">
-        <h3>Body</h3>
-        <p>Cuidados corporais para relaxar e cuidar da pele.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-    <div class="service-card solid">
-      <div class="service-card-body">
-        <h3>Skincare</h3>
-        <p>Rotinas de cuidado de pele com produtos profissionais.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-    <div class="service-card">
-      <img src="assets/wash-chairs.jpg" alt="Cadeiras de lavagem e cuidado capilar do DoubleSpace">
-      <div class="tint"></div>
-      <div class="service-card-body">
-        <h3>Massagens</h3>
-        <p>Momentos de relaxamento e bem-estar.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-    <div class="service-card">
-      <img src="assets/barber-chairs.jpg" alt="Espaço de barbearia do DoubleSpace">
-      <div class="tint"></div>
-      <div class="service-card-body">
-        <h3>Outros tratamentos</h3>
-        <p>Barbearia e demais serviços disponíveis no espaço.</p>
-        <a href="#" class="service-card-cta">Conhecer tratamento</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap section-pad" style="padding-bottom:0;">
+<div class="intro-block">
+<h2>Serviços</h2>
+<p>Cuidados pensados para o rosto, o corpo e os detalhes que fazem a diferença.</p>
+</div>
+</div>
+<div class="service-grid">
+<div class="service-card wide">
+<img src="facial-room.jpg" alt="Sala de tratamentos faciais do DoubleSpace">
+<div class="tint"></div>
+<div class="service-card-body">
+<h3>Face</h3>
+<p>Tratamentos faciais e de skincare adaptados a cada tipo de pele.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+<div class="service-card narrow">
+<img src="interior-manicure.jpg" alt="Zona de manicure do DoubleSpace">
+<div class="tint"></div>
+<div class="service-card-body">
+<h3>Nails</h3>
+<p>Manicure e pedicure com atenção ao detalhe.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+<div class="service-card solid">
+<div class="service-card-body">
+<h3>Body</h3>
+<p>Cuidados corporais para relaxar e cuidar da pele.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+<div class="service-card solid">
+<div class="service-card-body">
+<h3>Skincare</h3>
+<p>Rotinas de cuidado de pele com produtos profissionais.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+<div class="service-card">
+<img src="wash-chairs.jpg" alt="Cadeiras de lavagem e cuidado capilar do DoubleSpace">
+<div class="tint"></div>
+<div class="service-card-body">
+<h3>Massagens</h3>
+<p>Momentos de relaxamento e bem-estar.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+<div class="service-card">
+<img src="barber-chairs.jpg" alt="Espaço de barbearia do DoubleSpace">
+<div class="tint"></div>
+<div class="service-card-body">
+<h3>Outros tratamentos</h3>
+<p>Barbearia e demais serviços disponíveis no espaço.</p>
+<a href="#" class="service-card-cta">Conhecer tratamento</a>
+</div>
+</div>
+</div>
 </section>
 
 <section class="highlights section-pad">
-  <div class="wrap">
-    <div class="intro-block" style="margin-bottom:44px;">
-      <h2>Encontre o cuidado certo para si.</h2>
-      <p>Alguns dos tratamentos mais procurados no DoubleSpace.</p>
-    </div>
-    <div class="hl-scroll">
-      <div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
-      <div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
-      <div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
-      <div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
-      <div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
-      <div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
-      <div class="hl-item"><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="intro-block" style="margin-bottom:44px;">
+<h2>Encontre o cuidado certo para si.</h2>
+<p>Alguns dos tratamentos mais procurados no DoubleSpace.</p>
+</div>
+<div class="hl-scroll">
+<div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Manicure</span></div>
+<div class="hl-item"><span class="hl-index">Nails</span><span class="hl-name">Pedicure</span></div>
+<div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Skincare</span></div>
+<div class="hl-item"><span class="hl-index">Face</span><span class="hl-name">Tratamentos faciais</span></div>
+<div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Massagens</span></div>
+<div class="hl-item"><span class="hl-index">Body</span><span class="hl-name">Drenagem</span></div>
+<div class="hl-item"><span class="hl-index">Outros</span><span class="hl-name">Barbearia</span></div>
+</div>
+</div>
 </section>
 
 <section class="experience section-pad" id="experiencia">
-  <div class="wrap">
-    <div class="exp-top">
-      <h2>Mais do que um tratamento.</h2>
-      <p>Um momento pensado para cuidar de si, desacelerar e sair ainda mais confiante.</p>
-    </div>
-    <div class="exp-grid">
-      <figure class="big"><img src="assets/facial-room.jpg" alt="Sala de tratamentos do DoubleSpace, ambiente calmo e cuidado"></figure>
-      <figure><img src="assets/reception-logo.jpg" alt="Receção do DoubleSpace com a marca em destaque"></figure>
-      <figure><img src="assets/wash-chairs.jpg" alt="Zona de lavagem do DoubleSpace"></figure>
-    </div>
-  </div>
+<div class="wrap">
+<div class="exp-top">
+<h2>Mais do que um tratamento.</h2>
+<p>Um momento pensado para cuidar de si, desacelerar e sair ainda mais confiante.</p>
+</div>
+<div class="exp-grid">
+<figure class="big"><img src="facial-room.jpg" alt="Sala de tratamentos do DoubleSpace, ambiente calmo e cuidado"></figure>
+<figure><img src="reception-logo.jpg" alt="Receção do DoubleSpace com a marca em destaque"></figure>
+<figure><img src="wash-chairs.jpg" alt="Zona de lavagem do DoubleSpace"></figure>
+</div>
+</div>
 </section>
 
 <section class="reviews section-pad" id="avaliacoes">
-  <div class="wrap">
-    <div class="reviews-inner">
-      <h2>O que dizem sobre o DoubleSpace</h2>
-      <p class="reviews-note">As avaliações do DoubleSpace estão disponíveis publicamente no Google e no Instagram. Nesta demonstração, preferimos direcioná-lo às fontes originais em vez de reproduzir números ou comentários.</p>
-      <div class="reviews-cta">
-        <a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="review-mark">
-          <span class="g">G</span>
-          <span class="txt">Ver avaliações no Google</span>
-        </a>
-        <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="reviews-inner">
+<h2>O que dizem sobre o DoubleSpace</h2>
+<p class="reviews-note">As avaliações do DoubleSpace estão disponíveis publicamente no Google e no Instagram. Nesta demonstração, preferimos direcioná-lo às fontes originais em vez de reproduzir números ou comentários.</p>
+<div class="reviews-cta">
+<a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="review-mark">
+<span class="g">G</span>
+<span class="txt">Ver avaliações no Google</span>
+</a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
+</div>
+</div>
+</div>
 </section>
 
 <section class="insta section-pad">
-  <div class="wrap">
-    <div class="insta-top">
-      <h2>Veja mais do nosso trabalho</h2>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
-    </div>
-    <div class="insta-grid">
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/interior-manicure.jpg" alt="DoubleSpace no Instagram"></a>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/reception-logo.jpg" alt="DoubleSpace no Instagram"></a>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/facial-room.jpg" alt="DoubleSpace no Instagram"></a>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/lounge-window.jpg" alt="DoubleSpace no Instagram"></a>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/wash-chairs.jpg" alt="DoubleSpace no Instagram"></a>
-      <a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="assets/barber-chairs.jpg" alt="DoubleSpace no Instagram"></a>
-    </div>
-  </div>
+<div class="wrap">
+<div class="insta-top">
+<h2>Veja mais do nosso trabalho</h2>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener" class="btn btn-outline">Ver Instagram</a>
+</div>
+<div class="insta-grid">
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="interior-manicure.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="reception-logo.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="facial-room.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="lounge-window.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="wash-chairs.jpg" alt="DoubleSpace no Instagram"></a>
+<a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener"><img src="barber-chairs.jpg" alt="DoubleSpace no Instagram"></a>
+</div>
+</div>
 </section>
 
 <section class="location section-pad" id="localizacao">
-  <div class="wrap">
-    <div class="intro-block" style="margin-bottom:44px;">
-      <h2>Estamos em Benfica.</h2>
-    </div>
-    <div class="loc-grid">
-      <div class="loc-info">
-        <div class="loc-row">
-          <span class="k">MORADA</span>
-          <span class="v">Estrada de Benfica 706A, Lisboa</span>
-        </div>
-        <div class="loc-row">
-          <span class="k">HORÁRIO</span>
-          <span class="v">Todos os dias · 09:00 – 21:00</span>
-        </div>
-        <div class="loc-row">
-          <span class="k">CONTACTO</span>
-          <span class="v">+351 915 552 545</span>
-        </div>
-        <a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="btn btn-outline">Ver no mapa</a>
-      </div>
-      <div class="loc-map">
-        <div class="pin-wrap">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="#C7A874" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="#C7A874" stroke-width="1.3"/></svg>
-          <div class="street">Estrada de Benfica 706A</div>
-          <div class="city">1500-112 Lisboa</div>
-          <a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="btn btn-outline on-dark">Abrir no Google Maps</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="intro-block" style="margin-bottom:44px;">
+<h2>Estamos em Benfica.</h2>
+</div>
+<div class="loc-grid">
+<div class="loc-info">
+<div class="loc-row">
+<span class="k">MORADA</span>
+<span class="v">Estrada de Benfica 706A, Lisboa</span>
+</div>
+<div class="loc-row">
+<span class="k">HORÁRIO</span>
+<span class="v">Todos os dias · 09:00 – 21:00</span>
+</div>
+<div class="loc-row">
+<span class="k">CONTACTO</span>
+<span class="v">+351 915 552 545</span>
+</div>
+<a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="btn btn-outline">Ver no mapa</a>
+</div>
+<div class="loc-map">
+<div class="pin-wrap">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z" stroke="#C7A874" stroke-width="1.3"/><circle cx="12" cy="9" r="2.4" stroke="#C7A874" stroke-width="1.3"/></svg>
+<div class="street">Estrada de Benfica 706A</div>
+<div class="city">1500-112 Lisboa</div>
+<a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener" class="btn btn-outline on-dark">Abrir no Google Maps</a>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 <section class="final-cta">
-  <h2>Está na hora de cuidar de si.</h2>
-  <div class="actions">
-    <a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark">Agendar tratamento</a>
-    <a href="https://wa.me/351915552545" target="_blank" rel="noopener" class="btn btn-outline on-dark">Falar connosco</a>
-  </div>
+<h2>Está na hora de cuidar de si.</h2>
+<div class="actions">
+<a href="https://www.fresha.com/lvp/doublespace-nails-cosmetology-barber-salao-de-beleza-estrada-de-benfica-lisboa-vwy7X7" target="_blank" rel="noopener" class="btn btn-primary on-dark">Agendar tratamento</a>
+<a href="https://wa.me/351915552545" target="_blank" rel="noopener" class="btn btn-outline on-dark">Falar connosco</a>
+</div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">DoubleSpace</div>
-        <p class="footer-tag">Beauty salon em Benfica, Lisboa. Beleza, cuidado e bem-estar num só espaço.</p>
-      </div>
-      <div class="footer-col">
-        <div class="head">LOCALIZAÇÃO</div>
-        <ul>
-          <li>Estrada de Benfica 706A</li>
-          <li>1500-112 Lisboa</li>
-          <li><a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener">Ver no mapa</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="head">CONTACTO</div>
-        <ul>
-          <li><a href="tel:+351915552545">+351 915 552 545</a></li>
-          <li><a href="https://wa.me/351915552545" target="_blank" rel="noopener">WhatsApp</a></li>
-          <li>Todos os dias · 09:00–21:00</li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="head">SOCIAL</div>
-        <ul>
-          <li><a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://double-space.eu/" target="_blank" rel="noopener">double-space.eu</a></li>
-          <li><a href="#">Política de privacidade</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 DoubleSpace. Todos os direitos reservados.</span>
-      <span>Demonstração digital — Estrada de Benfica 706A, Lisboa</span>
-    </div>
-  </div>
+<div class="wrap">
+<div class="footer-grid">
+<div>
+<div class="footer-logo">DoubleSpace</div>
+<p class="footer-tag">Beauty salon em Benfica, Lisboa. Beleza, cuidado e bem-estar num só espaço.</p>
+</div>
+<div class="footer-col">
+<div class="head">LOCALIZAÇÃO</div>
+<ul>
+<li>Estrada de Benfica 706A</li>
+<li>1500-112 Lisboa</li>
+<li><a href="https://share.google/bc6Ft75TSgxD7QONN" target="_blank" rel="noopener">Ver no mapa</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="head">CONTACTO</div>
+<ul>
+<li><a href="tel:+351915552545">+351 915 552 545</a></li>
+<li><a href="https://wa.me/351915552545" target="_blank" rel="noopener">WhatsApp</a></li>
+<li>Todos os dias · 09:00–21:00</li>
+</ul>
+</div>
+<div class="footer-col">
+<div class="head">SOCIAL</div>
+<ul>
+<li><a href="https://www.instagram.com/doublespace_lisboa" target="_blank" rel="noopener">Instagram</a></li>
+<li><a href="https://double-space.eu/" target="_blank" rel="noopener">double-space.eu</a></li>
+<li><a href="#">Política de privacidade</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 DoubleSpace. Todos os direitos reservados.</span>
+<span>Demonstração digital — Estrada de Benfica 706A, Lisboa</span>
+</div>
+</div>
 </footer>
 
 <script>
-  const header = document.getElementById('siteHeader');
-  const onScroll = () => {
-    if(window.scrollY > 40){ header.classList.add('scrolled'); }
-    else { header.classList.remove('scrolled'); }
-  };
-  window.addEventListener('scroll', onScroll);
-  onScroll();
+const header = document.getElementById('siteHeader');
+const onScroll = () => {
+if(window.scrollY > 40){ header.classList.add('scrolled'); }
+else { header.classList.remove('scrolled'); }
+};
+window.addEventListener('scroll', onScroll);
+onScroll();
 
-  const panel = document.getElementById('mobilePanel');
-  document.getElementById('navToggle').addEventListener('click', () => panel.classList.add('open'));
-  document.getElementById('mobileClose').addEventListener('click', () => panel.classList.remove('open'));
-  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => panel.classList.remove('open')));
+const panel = document.getElementById('mobilePanel');
+document.getElementById('navToggle').addEventListener('click', () => panel.classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', () => panel.classList.remove('open'));
+panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => panel.classList.remove('open')));
 </script>
 
 </body>
